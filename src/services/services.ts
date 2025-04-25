@@ -1690,6 +1690,11 @@ export function createLanguageService(
     }
 
     function synchronizeHostData(): void {
+        if (host === undefined) {
+            log("synchronizeHostData: LanguageServiceHost is undefined.");
+            return;
+        }
+
         if (host.updateFromProject && !host.updateFromProjectInProgress) {
             host.updateFromProject();
         }
